@@ -11,10 +11,14 @@ Then(/^the (.*) page is displayed$/) do |page_url|
     new_window = page.driver.browser.window_handles.last 
     page.within_window new_window
      current_url.should == "http://" + page_url
+   elsif page_url == "new-homes"
+    url_check = current_path.start_with?("/" + page_url)
+	url_check.should == true
+    #current_path.should =~ /^\/page_url/
    else
-  # if page == new_homes
-  current_path.should == "/" + page_url
-  expected_url = "http://www.realestate.com.au/" + page_url
-  current_url.should == expected_url
+    current_path.should == "/" + page_url
+  #expected_url = "http://www.realestate.com.au/" + page_url
+  #current_url.should == expected_url
+  sleep 1
   end
  end
